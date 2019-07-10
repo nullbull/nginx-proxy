@@ -1,0 +1,37 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js">
+        </script>
+    </head>
+    <meta charset="UTF-8" content="text/html">
+<body>
+    <button id="hello-before">Hello(使用Nginx之前)</button>
+    <button id="hello-after">Hello(使用Nginx解决跨域问题)</button>
+</body>
+    <script>
+        $(document).ready(function () {
+            $('#hello-before').click(function () {
+                $.ajax({
+                    url:'http://localhost:8080/test/hello',
+                    success:function(res) {
+                        console.log("success",res)
+                    },
+                    error:function(err) {
+                        console.log('fail',err)
+                    }
+                })
+            })
+            $('#hello-after').click(function () {
+                $.ajax({
+                    url:'http://localhost:8001/test/hello',
+                    success:function(res) {
+                        console.log("success",res)
+                    },
+                    error:function(err) {
+                        console.log('fail',err)
+                    }
+                })
+            })
+        })
+    </script>
+</html>
